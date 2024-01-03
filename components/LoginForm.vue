@@ -6,30 +6,27 @@
     </form>
   </template>
   
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        email: '',
-        password: ''
-      };
-    },
-    methods: {
-      async login() {
-        try {
-          const response = await axios.post('/api/login', {
-            email: this.email,
-            password: this.password
-          });
-        } catch (error) {
-        }
+<script>  
+export default {
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        console.log('Tentative de connexion...');
+        const response = await this.$axios.post('/dashboard', {
+          email: this.email,
+          password: this.password
+        });
+        console.log(response);
+      } catch (error) {
+        console.error(error);
       }
     }
-  };
-  </script>
-  
-  <style scoped>
-  </style>
-  
+  }
+};
+</script>

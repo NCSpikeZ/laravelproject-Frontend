@@ -5,9 +5,7 @@
     </form>
   </template>
   
-  <script>
-  import axios from 'axios';
-  
+<script>  
   export default {
     data() {
       return {
@@ -17,7 +15,7 @@
     methods: {
       async recoverPassword() {
         try {
-          const response = await axios.post('/api/forgot-password', {
+          const response = await this.$axios.$post('/api/forgot-password', {
             email: this.email
           });
         } catch (error) {
@@ -25,8 +23,4 @@
       }
     }
   };
-  </script>
-  
-  <style scoped>
-  </style>
-  
+</script>

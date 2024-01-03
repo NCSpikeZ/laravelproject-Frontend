@@ -1,14 +1,12 @@
 <template>
-    <form @submit.prevent="updateProfile">
-      <input v-model="name" type="text" placeholder="Name">
-      <input v-model="email" type="email" placeholder="Email">
-      <button type="submit">Update Profile</button>
-    </form>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
+  <form @submit.prevent="updateProfile">
+    <input v-model="name" type="text" placeholder="Name">
+    <input v-model="email" type="email" placeholder="Email">
+    <button type="submit">Update Profile</button>
+  </form>
+</template>
+
+<script>
   export default {
     data() {
       return {
@@ -19,7 +17,7 @@
     methods: {
       async updateProfile() {
         try {
-          const response = await axios.put('/api/profile', {
+          const response = await this.$axios.$put('/api/profile', {
             name: this.name,
             email: this.email
           });
@@ -28,9 +26,4 @@
       }
     }
   };
-  </script>
-  
-  <style scoped>
-  /* Component-specific styles */
-  </style>
-  
+</script>
