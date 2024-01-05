@@ -20,6 +20,10 @@ export default {
   css: [
   ],
 
+  axios: {
+    baseURL: 'http://127.0.0.1:8000/' // Remplacez ceci par votre URL backend Laravel
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],

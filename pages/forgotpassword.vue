@@ -1,9 +1,9 @@
 <template lang="pug">
-ProfileEditForm
+ForgotPassword
 </template>
 
 <script>
 
 export default({
-    name: 'Dashboad',
+    name: 'ForgotPassword',
 }
