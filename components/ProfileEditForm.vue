@@ -21,7 +21,9 @@
             name: this.name,
             email: this.email
           });
+          console.log(response);
         } catch (error) {
+          console.error(error);
         }
       }
     }

@@ -1,5 +1,8 @@
 # frontend
 
+This project work in 2 parts, you can found the backend here :  
+https://github.com/NCSpikeZ/laravelproject
+
 ## Build Setup
 
 ```bash

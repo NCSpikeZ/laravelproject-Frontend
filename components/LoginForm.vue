@@ -1,30 +1,42 @@
 <template>
-    <form @submit.prevent="login">
-      <input v-model="email" type="email" placeholder="Email">
-      <input v-model="password" type="password" placeholder="Password">
-      <button type="submit">Login</button>
-    </form>
-  </template>
-  
-<script>  
+  <form @submit.prevent="handleSubmitForm">
+    <input v-model="userPayload.email" type="email" placeholder="Email">
+    <input v-model="userPayload.password" type="password" placeholder="Password">
+    <button type="submit" :loading="isSubmitLoading">Login</button>
+  </form>
+</template>
+
+<script>
 export default {
   data() {
     return {
-      email: '',
-      password: ''
+      userPayload: {
+        email: '',
+        password: ''
+      },
+      isSubmitLoading: false
     };
   },
   methods: {
-    async login() {
+    async handleSubmitForm() {
       try {
-        console.log('Tentative de connexion...');
-        const response = await this.$axios.post('/dashboard', {
-          email: this.email,
-          password: this.password
-        });
-        console.log(response);
+        console.log('Attempting login...');
+        this.isSubmitLoading = true;
+
+        const response = await this.$axios.post('/dashboard', this.userPayload);
+
+        if (response.status === 200) {
+          console.log('Server response:', response);
+
+          this.$router.push('/dashboard');
+        } else {
+          throw new Error('Invalid status code');
+        }
       } catch (error) {
         console.error(error);
+
+      } finally {
+        this.isSubmitLoading = false;
       }
     }
   }

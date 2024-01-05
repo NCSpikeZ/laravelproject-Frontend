@@ -18,7 +18,9 @@
           const response = await this.$axios.$post('/api/forgot-password', {
             email: this.email
           });
+          console.log(response);
         } catch (error) {
+          console.error(error);
         }
       }
     }
